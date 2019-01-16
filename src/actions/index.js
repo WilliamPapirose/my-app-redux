@@ -1,12 +1,13 @@
 let nextCardId = 0;
 
-export const addCard = (name, columnId, user) => {
+export const addCard = (name, columnId, user, columnName) => {
   return {
     type: 'ADD_CARD',
     id: nextCardId++,
     name,
     user,
     columnId,
+    columnName,
   };
 };
 
@@ -34,10 +35,32 @@ export const renameCard = (name, id, columnId) => {
   };
 };
 
+export const editDescription = (description, columnId, id) => {
+  return {
+    type: 'EDIT_DESCRIPTION',
+    description,
+    columnId,
+    id,
+  };
+};
+
 export const renameColumn = (name, columnId) => {
   return {
     type: 'RENAME_COLUMN',
     name,
     columnId,
+  };
+};
+
+export const showCardInfoPopup = (card) => {
+  return {
+    type: 'SHOW_CARD_INFO',
+    card,
+  };
+};
+
+export const hideCardInfoPopup = () => {
+  return {
+    type: 'HIDE_CARD_INFO',
   };
 };

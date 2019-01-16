@@ -5,6 +5,8 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     columns: state.columns,
+    cardInfoIsShowed: state.currentCardInfo.isShowed,
+    currentCard: state.currentCardInfo.card,
   };
 };
 

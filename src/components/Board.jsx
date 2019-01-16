@@ -1,11 +1,12 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import ColumnContainer from '../containers/ColumnContainer';
 import SignInContainer from '../containers/SignInContainer';
 import HeaderContainer from '../containers/HeaderContainer';
+import CardInfoPopupContainer from '../containers/CardInfoPopupContainer';
 
 
-const Board = ({ user, columns }) => (
+const Board = ({ user, columns, cardInfoIsShowed }) => (
   <React.Fragment>
     { !user.name && (
       <div role="presentation" className="fade">
@@ -15,6 +16,9 @@ const Board = ({ user, columns }) => (
     { user.name && (
       <React.Fragment>
         <HeaderContainer />
+        { cardInfoIsShowed && (
+          <CardInfoPopupContainer />
+        )}
         <div className="all_columns">
           {columns.map((column) => {
             return (
@@ -30,6 +34,7 @@ const Board = ({ user, columns }) => (
 Board.propTypes = {
   user: PropTypes.objectOf(PropTypes.string),
   columns: PropTypes.arrayOf(PropTypes.any).isRequired,
+  cardInfoIsShowed: PropTypes.bool.isRequired,
 };
 
 Board.defaultProps = {

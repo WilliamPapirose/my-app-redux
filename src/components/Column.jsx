@@ -13,15 +13,17 @@ const Column = ({
   deleteCard,
   renameCard,
   renameColumn,
+  showCardInfoPopup,
 }) => (
   <div className="column App">
     <EditableTitle name={columnName} rename={(newName) => { renameColumn(newName, id); }} canEdit="true" />
-    <AddCard addCard={(name) => { addCard(name, id, user.name); }} />
+    <AddCard addCard={(name) => { addCard(name, id, user.name, columnName); }} />
     {cards[id].map((card) => {
       return (
         <CardContainer
           key={card.id}
           {...card}
+          showCardInfoPopup={() => { showCardInfoPopup(card); }}
           renameCard={(newName) => { renameCard(newName, card.id, id); }}
           deleteCard={() => { deleteCard(card.id, id); }}
         />
@@ -39,6 +41,7 @@ Column.propTypes = {
   deleteCard: PropTypes.func.isRequired,
   renameCard: PropTypes.func.isRequired,
   renameColumn: PropTypes.func.isRequired,
+  showCardInfoPopup: PropTypes.func.isRequired,
 };
 
 export default Column;

@@ -5,6 +5,7 @@ import {
   deleteCard,
   renameCard,
   renameColumn,
+  showCardInfoPopup,
 } from '../actions/index';
 
 const mapStateToProps = (state) => {
@@ -16,8 +17,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCard: (name, id, user) => {
-      dispatch(addCard(name, id, user));
+    addCard: (name, id, user, columnName) => {
+      dispatch(addCard(name, id, user, columnName));
     },
     deleteCard: (id, columnId) => {
       dispatch(deleteCard(id, columnId));
@@ -27,7 +28,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     renameColumn: (name, columnId) => {
       dispatch(renameColumn(name, columnId));
-    }
+    },
+    showCardInfoPopup: (card) => {
+      dispatch(showCardInfoPopup(card));
+    },
   };
 };
 

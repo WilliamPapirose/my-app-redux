@@ -9,6 +9,7 @@ const Card = ({
   user,
   deleteCard,
   renameCard,
+  showCardInfoPopup,
 }) => (
   <React.Fragment>
     <div className="card">
@@ -23,6 +24,7 @@ const Card = ({
         <button
           type="button"
           className="button button_card button_left"
+          onClick={showCardInfoPopup}
         >
           More information
         </button>
@@ -46,6 +48,7 @@ Card.propTypes = {
   user: PropTypes.objectOf(PropTypes.string).isRequired,
   deleteCard: PropTypes.func.isRequired,
   renameCard: PropTypes.func.isRequired,
+  showCardInfoPopup: PropTypes.func.isRequired,
 };
 
 export default Card;
