@@ -1,10 +1,10 @@
 let nextCardId = 0;
 
-export const addCard = (text, columnId, user) => {
+export const addCard = (name, columnId, user) => {
   return {
     type: 'ADD_CARD',
     id: nextCardId++,
-    text,
+    name,
     user,
     columnId,
   };
@@ -18,13 +18,6 @@ export const deleteCard = (id, columnId) => {
   };
 };
 
-export const setVisibilityFilter = (filter) => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter,
-  };
-};
-
 export const signIn = (name) => {
   return {
     type: 'SIGN_IN',
@@ -32,10 +25,19 @@ export const signIn = (name) => {
   };
 };
 
-export const renameCard = (text, id) => {
+export const renameCard = (name, id, columnId) => {
   return {
     type: 'RENAME_CARD',
-    text,
+    name,
     id,
+    columnId,
+  };
+};
+
+export const renameColumn = (name, columnId) => {
+  return {
+    type: 'RENAME_COLUMN',
+    name,
+    columnId,
   };
 };

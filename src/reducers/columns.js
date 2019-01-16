@@ -1,18 +1,18 @@
 const initialState = [
-  { id: 0, name: 'TODO' },
-  { id: 1, name: 'In Progress' },
-  { id: 2, name: 'Testing' },
-  { id: 3, name: 'Done' },
+  { id: 0, columnName: 'TODO' },
+  { id: 1, columnName: 'In Progress' },
+  { id: 2, columnName: 'Testing' },
+  { id: 3, columnName: 'Done' },
 ];
 
 const columns = (state = initialState, action) => {
   switch (action.type) {
     case 'RENAME_COLUMN':
       return state.map((column) => {
-        if (column.id === action.id) {
+        if (column.id === action.columnId) {
           return {
             ...column,
-            name: action.name,
+            columnName: action.name,
           };
         }
         return column;

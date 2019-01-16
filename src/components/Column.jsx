@@ -2,23 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddCard from './AddCard';
 import CardContainer from '../containers/CardContainer';
+import EditableTitle from './EditableTitle';
 
 const Column = ({
   cards,
   id,
-  name,
+  columnName,
   addCard,
   user,
   deleteCard,
+  renameCard,
+  renameColumn,
 }) => (
   <div className="column App">
-    {name}
-    <AddCard addCard={(text) => { addCard(text, id, user.name); }} />
+    <EditableTitle name={columnName} rename={(newName) => { renameColumn(newName, id); }} canEdit="true" />
+    <AddCard addCard={(name) => { addCard(name, id, user.name); }} />
     {cards[id].map((card) => {
       return (
         <CardContainer
           key={card.id}
           {...card}
+          renameCard={(newName) => { renameCard(newName, card.id, id); }}
           deleteCard={() => { deleteCard(card.id, id); }}
         />
       );
@@ -28,11 +32,13 @@ const Column = ({
 
 Column.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  columnName: PropTypes.string.isRequired,
   user: PropTypes.objectOf(PropTypes.string).isRequired,
   cards: PropTypes.objectOf(PropTypes.array).isRequired,
   addCard: PropTypes.func.isRequired,
   deleteCard: PropTypes.func.isRequired,
+  renameCard: PropTypes.func.isRequired,
+  renameColumn: PropTypes.func.isRequired,
 };
 
 export default Column;

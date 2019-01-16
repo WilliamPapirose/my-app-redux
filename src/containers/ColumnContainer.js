@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import Column from '../components/Column';
-import { addCard, deleteCard } from '../actions/index';
+import {
+  addCard,
+  deleteCard,
+  renameCard,
+  renameColumn,
+} from '../actions/index';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,12 +16,18 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCard: (text, id, user) => {
-      dispatch(addCard(text, id, user));
+    addCard: (name, id, user) => {
+      dispatch(addCard(name, id, user));
     },
     deleteCard: (id, columnId) => {
       dispatch(deleteCard(id, columnId));
     },
+    renameCard: (name, id, columnId) => {
+      dispatch(renameCard(name, id, columnId));
+    },
+    renameColumn: (name, columnId) => {
+      dispatch(renameColumn(name, columnId));
+    }
   };
 };
 

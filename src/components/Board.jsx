@@ -15,11 +15,13 @@ const Board = ({ user, columns }) => (
     { user.name && (
       <React.Fragment>
         <HeaderContainer />
-        {columns.map((column) => {
-          return (
-            <ColumnContainer key={column.id} id={column.id} name={column.name} />
-          );
-        })}
+        <div className="all_columns">
+          {columns.map((column) => {
+            return (
+              <ColumnContainer key={column.id} id={column.id} columnName={column.columnName} />
+            );
+          })}
+        </div>
       </React.Fragment>
     )}
   </React.Fragment>

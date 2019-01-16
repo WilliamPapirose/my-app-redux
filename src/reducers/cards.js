@@ -10,7 +10,7 @@ const card = (state, action) => {
     case 'ADD_CARD':
       return {
         id: action.id,
-        text: action.text,
+        name: action.name,
         author: action.user,
       };
     case 'RENAME_CARD':
@@ -18,7 +18,7 @@ const card = (state, action) => {
         return state;
       }
       return Object.assign({}, state, {
-        text: action.text,
+        name: action.name,
       });
     default:
       return state;
@@ -37,7 +37,8 @@ const cards = (state = initialState, action) => {
       };
     case 'RENAME_CARD':
       return {
-        state,
+        ...state,
+        [action.columnId]: state[action.columnId].map(c => card(c, action)),
       };
     case 'DELETE_CARD':
       return {

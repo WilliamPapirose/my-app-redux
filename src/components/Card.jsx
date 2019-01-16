@@ -1,12 +1,14 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import EditableTitle from './EditableTitle';
 
 
 const Card = ({
-  text,
+  name,
   author,
   user,
   deleteCard,
+  renameCard,
 }) => (
   <React.Fragment>
     <div className="card">
@@ -16,7 +18,7 @@ const Card = ({
       <p className="right">
         Comments:
       </p>
-      {text}
+      <EditableTitle name={name} rename={renameCard} canEdit={user.name === author} />
       <div className="card_buttons">
         <button
           type="button"
@@ -39,10 +41,11 @@ const Card = ({
 );
 
 Card.propTypes = {
-  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   user: PropTypes.objectOf(PropTypes.string).isRequired,
   deleteCard: PropTypes.func.isRequired,
+  renameCard: PropTypes.func.isRequired,
 };
 
 export default Card;

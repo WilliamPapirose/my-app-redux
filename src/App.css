@@ -38,7 +38,6 @@
 .App {
   text-align: center;
   font-family: Dosis Bold, sans-serif;
-  padding-top: 25px;
   width: max-content;
 }
 
@@ -95,6 +94,7 @@
 
 .hat {
   position: fixed;
+  top: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -206,11 +206,19 @@
 }
 
 .hatUserName {
-	font-size: 24px;
+  font-size: 28px;
+  position: absolute;
+  text-align:center; 
+  width:100%;
+}
+
+.all_columns {
+  margin-top: 40px;
 }
 
 .column {
-	width:310px;
+  width:310px;
+  padding-top: 0;
 	text-align: center;
 	margin: 12px;
 	border-radius: 5px;
