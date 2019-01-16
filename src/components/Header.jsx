@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const Header = ({ user, signIn }) => (
   <div className="hat">
-    <button type="button" className="button left" onClick={() => { signIn(''); }}>Exit profile</button>
     <p className="hatUserName">{user.name}</p>
+    <button type="button" className="button hat_button" onClick={() => { signIn(''); }}>Exit profile</button>
   </div>
 );
 
