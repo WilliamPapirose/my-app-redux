@@ -4,6 +4,7 @@ import { hideCardInfoPopup } from '../actions/index';
 
 const mapStateToProps = (state) => {
   return {
+    comments: state.comments,
     card: state.currentCardInfo.card,
   };
 };

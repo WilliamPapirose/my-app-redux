@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DescriptionContainer from '../containers/DescriptionContainer';
+import CommentsContainer from '../containers/CommentsContainer';
 
 const CardInfoPopup = ({
   hide,
@@ -28,7 +29,7 @@ const CardInfoPopup = ({
           </div>
         </div>
         <DescriptionContainer />
-        
+        <CommentsContainer cardId={card.id} comments={comments.find(item => item.id === card.id).comments} />
       </div>
     </div>
   </div>
