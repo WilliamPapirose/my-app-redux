@@ -12,13 +12,15 @@ const mapStateToProps = (state) => {
   return {
     cards: state.cards,
     user: state.user,
+    comments: state.comments,
+    nextCardId: state.nextCardId,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCard: (name, id, user, columnName) => {
-      dispatch(addCard(name, id, user, columnName));
+    addCard: (name, id, user, columnName, cardId) => {
+      dispatch(addCard(name, id, user, columnName, cardId));
     },
     deleteCard: (id, columnId) => {
       dispatch(deleteCard(id, columnId));

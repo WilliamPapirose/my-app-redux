@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import EditableTitle from './EditableTitle';
 
 
@@ -7,6 +7,7 @@ const Card = ({
   name,
   author,
   user,
+  commentsCount,
   deleteCard,
   renameCard,
   showCardInfoPopup,
@@ -17,7 +18,7 @@ const Card = ({
         Author: {author}
       </p>
       <p className="right">
-        Comments:
+        Comments: {commentsCount}
       </p>
       <EditableTitle name={name} rename={renameCard} canEdit={user.name === author} />
       <div className="card_buttons">
@@ -46,6 +47,7 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   user: PropTypes.objectOf(PropTypes.string).isRequired,
+  commentsCount: PropTypes.number.isRequired,
   deleteCard: PropTypes.func.isRequired,
   renameCard: PropTypes.func.isRequired,
   showCardInfoPopup: PropTypes.func.isRequired,

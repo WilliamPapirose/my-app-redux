@@ -97,7 +97,6 @@ class Comment extends Component {
 
 Comment.propTypes = {
   editComment: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,

@@ -21,6 +21,8 @@ const initialState = JSON.parse(window.localStorage.getItem('myAppInfo')) || {
   ],
   comments: [],
   currentCardInfo: { card: {}, isShowed: false },
+  nextCardId: { id: 0 },
+  nextCommentId: { id: 0 },
 };
 
 render(

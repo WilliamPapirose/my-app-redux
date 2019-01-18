@@ -9,7 +9,7 @@ const Header = ({ user, signIn }) => (
 );
 
 Header.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.objectOf(PropTypes.string).isRequired,
   signIn: PropTypes.func.isRequired,
 };
 

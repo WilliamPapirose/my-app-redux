@@ -1,11 +1,7 @@
-let nextCardId = 0;
-
-let nextCommentId = 0;
-
-export const addCard = (name, columnId, user, columnName) => {
+export const addCard = (name, columnId, user, columnName, id) => {
   return {
     type: 'ADD_CARD',
-    id: nextCardId++,
+    id,
     name,
     user,
     columnId,
@@ -67,11 +63,11 @@ export const hideCardInfoPopup = () => {
   };
 };
 
-export const addComment = (id, author, text) => {
+export const addComment = (id, author, text, nextCommentId) => {
   return {
     type: 'ADD_COMMENT',
     id,
-    commentId: nextCommentId++,
+    commentId: nextCommentId,
     author,
     text,
   };

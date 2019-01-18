@@ -7,6 +7,8 @@ export const toLocalStore = store => next => action => {
       cards: store.getState().cards,
       columns: store.getState().columns,
       comments: store.getState().comments,
+      nextCardId: store.getState().nextCardId,
+      nextCommentId: store.getState().nextCommentId,
     }));
   }
   return next(action);

@@ -13,9 +13,14 @@ class Comments extends Component {
   };
 
   addComment = () => {
-    const { cardId, addComment, user } = this.props;
+    const {
+      cardId,
+      addComment,
+      user,
+      nextCommentId,
+    } = this.props;
     if (this.comment.value !== '') {
-      addComment(cardId, user.name, this.comment.value);
+      addComment(cardId, user.name, this.comment.value, nextCommentId);
       this.comment.value = '';
     }
   }
@@ -62,9 +67,10 @@ class Comments extends Component {
 }
 
 Comments.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.objectOf(PropTypes.string).isRequired,
   comments: PropTypes.arrayOf(PropTypes.object).isRequired,
   cardId: PropTypes.number.isRequired,
+  nextCommentId: PropTypes.number.isRequired,
   editComment: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
   deleteComment: PropTypes.func.isRequired,
