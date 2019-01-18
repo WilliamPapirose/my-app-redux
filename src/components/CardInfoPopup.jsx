@@ -29,7 +29,10 @@ const CardInfoPopup = ({
           </div>
         </div>
         <DescriptionContainer />
-        <CommentsContainer cardId={card.id} comments={comments.find(item => item.id === card.id).comments} />
+        <CommentsContainer
+          cardId={card.id}
+          comments={comments.find(item => item.id === card.id).comments}
+        />
       </div>
     </div>
   </div>

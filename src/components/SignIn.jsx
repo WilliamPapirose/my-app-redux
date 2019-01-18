@@ -18,6 +18,7 @@ const SignIn = ({
       }}
       >
         <input
+          autoFocus
           ref={(node) => {
             input = node;
           }}

@@ -30,10 +30,12 @@ class AddCard extends Component {
               }
               addCard(this.input.value);
               this.input.value = '';
+              this.showHideForm();
             }}
             >
               <p>
                 <input
+                  autoFocus
                   maxLength="42"
                   ref={(node) => { this.input = node; }}
                   className="new_card_name"
