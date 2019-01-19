@@ -327,9 +327,9 @@ word-break: break-all;
   text-align: center;
   width: 96%;
   height: 90%;
-background-color: rgb(91, 42, 104);
+  background-color: rgb(91, 42, 104);
   border-radius: 12px;
-  margin-top: 30px;
+  margin-top: 10px;
   overflow-y: scroll;
 }
 
