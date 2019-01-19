@@ -33,8 +33,7 @@ class AddCard extends Component {
         <button type="button" className="button plus" onClick={this.showHideForm}> + </button>
         {isFormShowed && (
           <div>
-            <form onSubmit={this.onSubmit}
-            >
+            <form onSubmit={this.onSubmit}>
               <p>
                 <input
                   autoFocus
