@@ -13,8 +13,6 @@ const card = (state, action) => {
         name: action.name,
         author: action.user,
         description: '',
-        columnName: action.columnName,
-        columnId: action.columnId,
       };
     case 'RENAME_CARD':
       if (state.id !== action.id) {
@@ -45,12 +43,8 @@ const cards = (state = initialState, action) => {
           card(undefined, action),
         ],
       };
-    case 'EDIT_DESCRIPTION':
-      return {
-        ...state,
-        [action.columnId]: state[action.columnId].map(c => card(c, action)),
-      };
     case 'RENAME_CARD':
+    case 'EDIT_DESCRIPTION':
       return {
         ...state,
         [action.columnId]: state[action.columnId].map(c => card(c, action)),

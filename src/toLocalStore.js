@@ -1,5 +1,6 @@
 
 export const toLocalStore = store => next => action => {
+  const result = next(action);
   if (action.type !== 'HIDE_CARD_INFO' &&
    action.type !== 'SHOW_CARD_INFO' &&
    action.type !== 'SIGN_IN') {
@@ -11,5 +12,5 @@ export const toLocalStore = store => next => action => {
       nextCommentId: store.getState().nextCommentId,
     }));
   }
-  return next(action);
+  return result;
 };

@@ -6,6 +6,7 @@ import CommentsContainer from '../containers/CommentsContainer';
 const CardInfoPopup = ({
   hide,
   card,
+  currentColumn,
   comments,
 }) => (
   <div className="info_popup">
@@ -17,7 +18,7 @@ const CardInfoPopup = ({
             Author: {card.author}
           </p>
           <p className="card_name">{card.name}</p>
-          <p className="column_name">{card.columnName}</p>
+          <p className="column_name">{currentColumn.column.name}</p>
           <div className="buttons">
             <button
               type="button"
@@ -41,6 +42,7 @@ const CardInfoPopup = ({
 CardInfoPopup.propTypes = {
   hide: PropTypes.func.isRequired,
   card: PropTypes.objectOf(PropTypes.any).isRequired,
+  currentColumn: PropTypes.objectOf(PropTypes.any).isRequired,
   comments: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

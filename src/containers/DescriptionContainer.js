@@ -5,6 +5,7 @@ import { editDescription } from '../actions/index';
 const mapStateToProps = (state) => {
   return {
     card: state.currentCardInfo.card,
+    currentColumn: state.currentColumn,
     user: state.user.name,
   };
 };

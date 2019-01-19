@@ -50,10 +50,11 @@ export const renameColumn = (name, columnId) => {
   };
 };
 
-export const showCardInfoPopup = (card) => {
+export const showCardInfoPopup = (card, column) => {
   return {
     type: 'SHOW_CARD_INFO',
     card,
+    column,
   };
 };
 

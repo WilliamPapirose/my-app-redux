@@ -23,8 +23,8 @@ class Description extends Component {
   }
 
   editDescription = (description) => {
-    const { editDescription, card } = this.props;
-    editDescription(description, card.columnId, card.id);
+    const { editDescription, card, currentColumn } = this.props;
+    editDescription(description, currentColumn.column.id, card.id);
     this.setState({ editMode: false });
     this.description.blur();
   }
@@ -107,6 +107,7 @@ class Description extends Component {
 
 Description.propTypes = {
   card: PropTypes.objectOf(PropTypes.any).isRequired,
+  currentColumn: PropTypes.objectOf(PropTypes.any).isRequired,
   user: PropTypes.string.isRequired,
   editDescription: PropTypes.func.isRequired,
 };

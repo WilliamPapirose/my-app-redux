@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     comments: state.comments,
     card: state.currentCardInfo.card,
+    currentColumn: state.currentColumn,
   };
 };
 

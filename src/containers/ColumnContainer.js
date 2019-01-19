@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch) => {
     renameColumn: (name, columnId) => {
       dispatch(renameColumn(name, columnId));
     },
-    showCardInfoPopup: (card) => {
-      dispatch(showCardInfoPopup(card));
+    showCardInfoPopup: (card, column) => {
+      dispatch(showCardInfoPopup(card, column));
     },
   };
 };

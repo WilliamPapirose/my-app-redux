@@ -30,7 +30,7 @@ const Column = ({
           key={card.id}
           {...card}
           commentsCount={comments.find(item => item.id === card.id).comments.length}
-          showCardInfoPopup={() => { showCardInfoPopup(card); }}
+          showCardInfoPopup={() => { showCardInfoPopup(card, { id, name: columnName }); }}
           renameCard={(newName) => { renameCard(newName, card.id, id); }}
           deleteCard={() => { deleteCard(card.id, id); }}
         />
