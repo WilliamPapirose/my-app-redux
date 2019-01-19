@@ -1,10 +1,10 @@
-
-export const toLocalStore = store => next => action => {
+// eslint-disable-next-line import/prefer-default-export
+export const toLocalStore = store => next => (action) => {
   const result = next(action);
-  if (action.type !== 'HIDE_CARD_INFO' &&
-   action.type !== 'SHOW_CARD_INFO' &&
-   action.type !== 'SIGN_IN') {
-    window.localStorage.setItem('myAppInfo',JSON.stringify({
+  if (action.type !== 'HIDE_CARD_INFO'
+  && action.type !== 'SHOW_CARD_INFO'
+  && action.type !== 'SIGN_IN') {
+    window.localStorage.setItem('myAppInfo', JSON.stringify({
       cards: store.getState().cards,
       columns: store.getState().columns,
       comments: store.getState().comments,
