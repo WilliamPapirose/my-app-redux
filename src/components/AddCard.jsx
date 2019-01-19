@@ -15,23 +15,25 @@ class AddCard extends Component {
     this.setState({ isFormShowed: !isFormShowed });
   }
 
-  render() {
+  onSubmit = (e) => {
     const { addCard } = this.props;
+    e.preventDefault();
+    if (!this.input.value.trim()) {
+      return;
+    }
+    addCard(this.input.value);
+    this.input.value = '';
+    this.showHideForm();
+  }
+
+  render() {
     const { isFormShowed } = this.state;
     return (
       <div className="addform">
         <button type="button" className="button plus" onClick={this.showHideForm}> + </button>
         {isFormShowed && (
           <div>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              if (!this.input.value.trim()) {
-                return;
-              }
-              addCard(this.input.value);
-              this.input.value = '';
-              this.showHideForm();
-            }}
+            <form onSubmit={this.onSubmit}
             >
               <p>
                 <input
