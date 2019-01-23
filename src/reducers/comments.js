@@ -1,53 +1,44 @@
-const comments = (state = [], action) => {
+let newComments;
+
+const initialState = JSON.parse(window.localStorage.getItem('Comments')) || { };
+
+const comments = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_CARD':
-      return [
+      return {
         ...state,
-        { id: action.id, comments: [] },
-      ];
+        [action.id]: [],
+      };
     case 'DELETE_CARD':
-      return state.filter(c => c.id !== action.id);
+      newComments = { ...state };
+      delete newComments[action.id];
+      return newComments;
     case 'ADD_COMMENT':
-      return state.map((item) => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            comments: [
-              ...item.comments,
-              { id: action.commentId, text: action.text, author: action.author },
-            ],
-          };
-        }
-        return item;
-      });
+      return {
+        ...state,
+        [action.id]: [
+          ...state[action.id],
+          { id: action.commentId, text: action.text, author: action.author },
+        ],
+      };
     case 'DELETE_COMMENT':
-      return state.map((item) => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            comments: item.comments.filter(subItem => subItem.id !== action.commentId),
-          };
-        }
-        return item;
-      });
+      return {
+        ...state,
+        [action.id]: state[action.id].filter(comment => comment.id !== action.commentId),
+      };
     case 'EDIT_COMMENT':
-      return state.map((item) => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            comments: item.comments.map((subItem) => {
-              if (subItem.id === action.commentId) {
-                return {
-                  ...subItem,
-                  text: action.text,
-                };
-              }
-              return subItem;
-            }),
-          };
-        }
-        return item;
-      });
+      return {
+        ...state,
+        [action.id]: state[action.id].map((comment) => {
+          if (comment.id === action.commentId) {
+            return {
+              ...comment,
+              text: action.text,
+            };
+          }
+          return comment;
+        }),
+      };
     default:
       return state;
   }

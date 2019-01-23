@@ -52,7 +52,7 @@ class AddCard extends Component {
         )}
       </div>
     );
-  };
+  }
 }
 
 AddCard.propTypes = {

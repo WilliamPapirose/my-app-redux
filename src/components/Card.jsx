@@ -15,12 +15,14 @@ const Card = ({
   <React.Fragment>
     <div className="card">
       <p className="left">
-        Author: {author}
+        Author:&nbsp;
+        {author}
       </p>
       <p className="right">
-        Comments: {commentsCount}
+        Comments:&nbsp;
+        {commentsCount}
       </p>
-      <EditableTitle name={name} rename={renameCard} canEdit={user.name === author} />
+      <EditableTitle name={name} rename={renameCard} canEdit={user === author} />
       <div className="card_buttons">
         <button
           type="button"
@@ -29,7 +31,7 @@ const Card = ({
         >
           More information
         </button>
-        {user.name === author && (
+        {user === author && (
           <button
             type="button"
             className="button button_card button_right"

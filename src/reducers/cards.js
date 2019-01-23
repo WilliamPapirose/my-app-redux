@@ -1,36 +1,8 @@
 const initialState = {
-  0: [],
-  1: [],
-  2: [],
-  3: [],
-};
-
-const card = (state, action) => {
-  switch (action.type) {
-    case 'ADD_CARD':
-      return {
-        id: action.id,
-        name: action.name,
-        author: action.user,
-        description: '',
-      };
-    case 'RENAME_CARD':
-      if (state.id !== action.id) {
-        return state;
-      }
-      return Object.assign({}, state, {
-        name: action.name,
-      });
-    case 'EDIT_DESCRIPTION':
-      if (state.id !== action.id) {
-        return state;
-      }
-      return Object.assign({}, state, {
-        description: action.description,
-      });
-    default:
-      return state;
-  }
+  0: JSON.parse(window.localStorage.getItem('Cards_column0')) || [],
+  1: JSON.parse(window.localStorage.getItem('Cards_column1')) || [],
+  2: JSON.parse(window.localStorage.getItem('Cards_column2')) || [],
+  3: JSON.parse(window.localStorage.getItem('Cards_column3')) || [],
 };
 
 const cards = (state = initialState, action) => {
@@ -40,14 +12,39 @@ const cards = (state = initialState, action) => {
         ...state,
         [action.columnId]: [
           ...state[action.columnId],
-          card(undefined, action),
+          {
+            id: action.id,
+            name: action.name,
+            author: action.user,
+            description: '',
+          },
         ],
       };
     case 'RENAME_CARD':
+      return {
+        ...state,
+        [action.columnId]: state[action.columnId].map((card) => {
+          if (card.id !== action.id) {
+            return card;
+          }
+          return {
+            ...card,
+            name: action.name,
+          };
+        }),
+      };
     case 'EDIT_DESCRIPTION':
       return {
         ...state,
-        [action.columnId]: state[action.columnId].map(c => card(c, action)),
+        [action.columnId]: state[action.columnId].map((card) => {
+          if (card.id !== action.id) {
+            return card;
+          }
+          return {
+            ...card,
+            description: action.description,
+          };
+        }),
       };
     case 'DELETE_CARD':
       return {

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 const Header = ({ user, signIn }) => (
   <div className="hat">
-    <p className="hatUserName">{user.name}</p>
+    <p className="hatUserName">{user}</p>
     <button type="button" className="button hat_button" onClick={() => { signIn(''); }}>Exit profile</button>
   </div>
 );
 
 Header.propTypes = {
-  user: PropTypes.objectOf(PropTypes.string).isRequired,
+  user: PropTypes.string.isRequired,
   signIn: PropTypes.func.isRequired,
 };
 

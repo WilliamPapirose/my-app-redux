@@ -83,7 +83,9 @@ class EditableTitle extends Component {
         {isFormShowed && (
           <React.Fragment>
             <div className={length < maxLength ? 'white' : 'red'}>
-              {length}/{maxLength}
+              {length}
+              /
+              {maxLength}
             </div>
             <button type="button" className="button" onClick={this.handleSubmit}>Save</button>
             <button type="button" className="button" onClick={this.cancel}>Cancel</button>

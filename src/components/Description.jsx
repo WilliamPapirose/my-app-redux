@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 class Description extends Component {
   constructor(props) {
     super(props);
-    const { card } = this.props;
+    const { currentCard } = this.props;
     this.state = {
       editMode: false,
-      description: card.description,
-      addingMode: !!card.description,
+      description: currentCard.description,
+      addingMode: !!currentCard.description,
     };
   }
 
@@ -23,8 +23,8 @@ class Description extends Component {
   }
 
   editDescription = (description) => {
-    const { editDescription, card, currentColumn } = this.props;
-    editDescription(description, currentColumn.column.id, card.id);
+    const { editDescription, currentCard, currentColumn } = this.props;
+    editDescription(description, currentColumn.id, currentCard.id);
     this.setState({ editMode: false });
     this.description.blur();
   }
@@ -40,8 +40,8 @@ class Description extends Component {
   }
 
   isEditMode = () => {
-    const { card, user } = this.props;
-    if (card.author === user) {
+    const { currentCard, user } = this.props;
+    if (currentCard.author === user) {
       this.setState({ editMode: true });
     } else this.description.blur();
   }
@@ -51,8 +51,8 @@ class Description extends Component {
   }
 
   cancel = () => {
-    const { card } = this.props;
-    this.setState({ description: card.description, editMode: false });
+    const { currentCard } = this.props;
+    this.setState({ description: currentCard.description, editMode: false });
     this.description.blur();
   }
 
@@ -69,7 +69,7 @@ class Description extends Component {
   render() {
     const {
       user,
-      card,
+      currentCard,
     } = this.props;
     const { description, editMode, addingMode } = this.state;
     return (
@@ -77,7 +77,7 @@ class Description extends Component {
         onFocus={this.isEditMode}
         className="description"
       >
-        {(card.author === user && !addingMode) && (
+        {(currentCard.author === user && !addingMode) && (
           <div className="description">
             <button type="button" className="button plus" onClick={this.addDescription}> Add description </button>
           </div>
@@ -92,7 +92,7 @@ class Description extends Component {
             ref={(ref) => { this.description = ref; }}
             className="textarea"
           />
-          {card.author === user && editMode && (
+          {currentCard.author === user && editMode && (
           <div className="author_buttons with_desc">
             <button type="button" className="button" onClick={this.saveDescription}> Save </button>
             <button type="button" className="button" onClick={this.deleteDescription}> Delete description </button>
@@ -106,7 +106,7 @@ class Description extends Component {
 }
 
 Description.propTypes = {
-  card: PropTypes.objectOf(PropTypes.any).isRequired,
+  currentCard: PropTypes.objectOf(PropTypes.any).isRequired,
   currentColumn: PropTypes.objectOf(PropTypes.any).isRequired,
   user: PropTypes.string.isRequired,
   editDescription: PropTypes.func.isRequired,

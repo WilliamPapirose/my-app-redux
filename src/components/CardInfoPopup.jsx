@@ -4,8 +4,8 @@ import DescriptionContainer from '../containers/DescriptionContainer';
 import CommentsContainer from '../containers/CommentsContainer';
 
 const CardInfoPopup = ({
-  hide,
-  card,
+  hideCardInfoPopup,
+  currentCard,
   currentColumn,
   comments,
 }) => (
@@ -15,15 +15,16 @@ const CardInfoPopup = ({
       <div className="popup">
         <div className="head">
           <p className="author">
-            Author: {card.author}
+            Author:&nbsp;
+            {currentCard.author}
           </p>
-          <p className="card_name">{card.name}</p>
-          <p className="column_name">{currentColumn.column.name}</p>
+          <p className="card_name">{currentCard.name}</p>
+          <p className="column_name">{currentColumn.name}</p>
           <div className="buttons">
             <button
               type="button"
               className="button plus right"
-              onClick={hide}
+              onClick={hideCardInfoPopup}
             >
               X
             </button>
@@ -31,8 +32,8 @@ const CardInfoPopup = ({
         </div>
         <DescriptionContainer />
         <CommentsContainer
-          cardId={card.id}
-          comments={comments.find(item => item.id === card.id).comments}
+          cardId={currentCard.id}
+          comments={comments[currentCard.id]}
         />
       </div>
     </div>
@@ -40,8 +41,8 @@ const CardInfoPopup = ({
 );
 
 CardInfoPopup.propTypes = {
-  hide: PropTypes.func.isRequired,
-  card: PropTypes.objectOf(PropTypes.any).isRequired,
+  hideCardInfoPopup: PropTypes.func.isRequired,
+  currentCard: PropTypes.objectOf(PropTypes.any).isRequired,
   currentColumn: PropTypes.objectOf(PropTypes.any).isRequired,
   comments: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

@@ -1,14 +1,12 @@
 import { connect } from 'react-redux';
 import Board from '../components/Board';
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    columns: state.columns,
-    cardInfoIsShowed: state.currentCardInfo.isShowed,
-    currentCard: state.currentCardInfo.card,
-  };
-};
+const mapStateToProps = state => ({
+  user: state.app.user,
+  columns: state.columns,
+  cardInfoIsShowed: state.app.current.isShowed,
+  currentCard: state.app.current.card,
+});
 
 const BoardContainer = connect(
   mapStateToProps,

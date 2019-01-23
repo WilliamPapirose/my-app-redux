@@ -1,27 +1,19 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Comments from '../components/Comments';
 import { addComment, deleteComment, editComment } from '../actions/index';
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    nextCommentId: state.nextCommentId,
-  };
-};
+const mapStateToProps = state => ({
+  user: state.app.user,
+  nextCommentId: state.app.nextCommentId,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addComment: (id, author, text, commentId) => {
-      dispatch(addComment(id, author, text, commentId));
-    },
-    deleteComment: (id, commentId) => {
-      dispatch(deleteComment(id, commentId));
-    },
-    editComment: (id, commentId, text) => {
-      dispatch(editComment(id, commentId, text));
-    },
-  };
-};
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addComment,
+  deleteComment,
+  editComment,
+}, dispatch);
+
 
 const CommentsContainer = connect(
   mapStateToProps,

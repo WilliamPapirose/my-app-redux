@@ -20,7 +20,7 @@ class Comments extends Component {
       nextCommentId,
     } = this.props;
     if (this.comment.value !== '') {
-      addComment(cardId, user.name, this.comment.value, nextCommentId);
+      addComment(cardId, user, this.comment.value, nextCommentId);
       this.comment.value = '';
     }
   }
@@ -54,7 +54,7 @@ class Comments extends Component {
             <Comment
               key={comment.id}
               editComment={(text) => { editComment(cardId, comment.id, text); }}
-              user={user.name}
+              user={user}
               author={comment.author}
               text={comment.text}
               deleteComment={() => { deleteComment(cardId, comment.id); }}

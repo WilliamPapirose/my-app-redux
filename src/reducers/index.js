@@ -1,22 +1,14 @@
 import { combineReducers } from 'redux';
 import cards from './cards';
-import user from './user';
+import app from './app';
 import columns from './columns';
 import comments from './comments';
-import currentCardInfo from './currentCardInfo';
-import currentColumn from './currentColumn';
-import nextCardId from './nextCardId';
-import nextCommentId from './nextCommentId';
 
-const myApp = combineReducers({
+const rootReducer = combineReducers({
   cards,
-  user,
   columns,
   comments,
-  currentCardInfo,
-  currentColumn,
-  nextCardId,
-  nextCommentId,
+  app,
 });
 
-export default myApp;
+export default rootReducer;

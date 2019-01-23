@@ -88,7 +88,8 @@ class Comment extends Component {
           </div>
         )}
         <div className="comment_author">
-          Author: {author}
+          Author:&nbsp;
+          {author}
         </div>
       </div>
     );

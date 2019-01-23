@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Column from '../components/Column';
 import {
   addCard,
@@ -8,34 +9,20 @@ import {
   showCardInfoPopup,
 } from '../actions/index';
 
-const mapStateToProps = (state) => {
-  return {
-    cards: state.cards,
-    user: state.user,
-    comments: state.comments,
-    nextCardId: state.nextCardId,
-  };
-};
+const mapStateToProps = state => ({
+  cards: state.cards,
+  user: state.app.user,
+  comments: state.comments,
+  nextCardId: state.app.nextCardId,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addCard: (name, id, user, columnName, cardId) => {
-      dispatch(addCard(name, id, user, columnName, cardId));
-    },
-    deleteCard: (id, columnId) => {
-      dispatch(deleteCard(id, columnId));
-    },
-    renameCard: (name, id, columnId) => {
-      dispatch(renameCard(name, id, columnId));
-    },
-    renameColumn: (name, columnId) => {
-      dispatch(renameColumn(name, columnId));
-    },
-    showCardInfoPopup: (card, column) => {
-      dispatch(showCardInfoPopup(card, column));
-    },
-  };
-};
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addCard,
+  deleteCard,
+  renameCard,
+  renameColumn,
+  showCardInfoPopup,
+}, dispatch);
 
 const ColumnContainer = connect(
   mapStateToProps,

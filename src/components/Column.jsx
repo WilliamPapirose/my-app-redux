@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddCard from './AddCard';
-import CardContainer from '../containers/CardContainer';
 import EditableTitle from './EditableTitle';
+import Card from './Card';
 
 const Column = ({
   cards,
@@ -23,19 +23,18 @@ const Column = ({
       rename={(newName) => { renameColumn(newName, id); }}
       canEdit
     />
-    <AddCard addCard={(name) => { addCard(name, id, user.name, columnName, nextCardId.id); }} />
-    {cards[id].map((card) => {
-      return (
-        <CardContainer
-          key={card.id}
-          {...card}
-          commentsCount={comments.find(item => item.id === card.id).comments.length}
-          showCardInfoPopup={() => { showCardInfoPopup(card, { id, name: columnName }); }}
-          renameCard={(newName) => { renameCard(newName, card.id, id); }}
-          deleteCard={() => { deleteCard(card.id, id); }}
-        />
-      );
-    })}
+    <AddCard addCard={(name) => { addCard(name, id, user, columnName, nextCardId); }} />
+    {cards[id].map(card => (
+      <Card
+        key={card.id}
+        {...card}
+        user={user}
+        commentsCount={comments[card.id].length}
+        showCardInfoPopup={() => { showCardInfoPopup(card, { id, name: columnName }); }}
+        renameCard={(newName) => { renameCard(newName, card.id, id); }}
+        deleteCard={() => { deleteCard(card.id, id); }}
+      />
+    ))}
   </div>
 );
 

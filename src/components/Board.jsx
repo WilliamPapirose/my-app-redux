@@ -8,23 +8,21 @@ import CardInfoPopupContainer from '../containers/CardInfoPopupContainer';
 
 const Board = ({ user, columns, cardInfoIsShowed }) => (
   <React.Fragment>
-    { !user.name && (
+    { !user && (
       <div role="presentation" className="fade">
         <SignInContainer />
       </div>
     )}
-    { user.name && (
+    { user && (
       <React.Fragment>
         <HeaderContainer />
         { cardInfoIsShowed && (
           <CardInfoPopupContainer />
         )}
         <div className="all_columns">
-          {columns.map((column) => {
-            return (
-              <ColumnContainer key={column.id} id={column.id} columnName={column.columnName} />
-            );
-          })}
+          {columns.map(column => (
+            <ColumnContainer key={column.id} id={column.id} columnName={column.columnName} />
+          ))}
         </div>
       </React.Fragment>
     )}

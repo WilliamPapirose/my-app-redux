@@ -1,4 +1,4 @@
-const initialState = [
+const initialState = JSON.parse(window.localStorage.getItem('Columns')) || [
   { id: 0, columnName: 'TODO' },
   { id: 1, columnName: 'In Progress' },
   { id: 2, columnName: 'Testing' },
