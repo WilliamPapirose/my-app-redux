@@ -40,7 +40,7 @@ class Comment extends Component {
 
   saveComment = () => {
     const { editComment } = this.props;
-    if (this.comment.innerText) {
+    if (this.comment.innerText.trim()) {
       editComment(this.comment.innerText);
       this.setState({ onEdit: false });
     }

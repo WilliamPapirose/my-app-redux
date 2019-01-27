@@ -36,6 +36,7 @@ class AddCard extends Component {
             <form onSubmit={this.onSubmit}>
               <p>
                 <input
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                   maxLength="42"
                   ref={(node) => { this.input = node; }}

@@ -18,6 +18,7 @@ const SignIn = ({
       }}
       >
         <input
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           ref={(node) => {
             input = node;

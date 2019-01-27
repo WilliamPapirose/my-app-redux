@@ -19,7 +19,7 @@ class Comments extends Component {
       user,
       nextCommentId,
     } = this.props;
-    if (this.comment.value !== '') {
+    if (this.comment.value.trim()) {
       addComment(cardId, user, this.comment.value, nextCommentId);
       this.comment.value = '';
     }

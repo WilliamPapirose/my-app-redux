@@ -26,7 +26,7 @@ class EditableTitle extends Component {
 
   handleSubmit = () => {
     const { rename } = this.props;
-    if (this.titleText.innerText !== '' && this.titleText.innerText.length <= maxLength) {
+    if (this.titleText.innerText.trim() && this.titleText.innerText.length <= maxLength) {
       this.setState({
         name: this.titleText.innerText,
         isFormShowed: false,

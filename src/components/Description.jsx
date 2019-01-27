@@ -24,6 +24,9 @@ class Description extends Component {
 
   editDescription = (description) => {
     const { editDescription, currentCard, currentColumn } = this.props;
+    if (!description.trim()) {
+      return;
+    }
     editDescription(description, currentColumn.id, currentCard.id);
     this.setState({ editMode: false });
     this.description.blur();
