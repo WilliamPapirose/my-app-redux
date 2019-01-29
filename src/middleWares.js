@@ -10,7 +10,7 @@ export const toLocalStore = store => next => (action) => {
       window.localStorage.setItem('nextCardId', store.getState().app.nextCardId);
       window.localStorage.setItem('Comments', JSON.stringify(store.getState().comments));
     case 'DELETE_CARD':
-      window.localStorage.setItem('Comments', JSON.stringify(store.getState().comments)); 
+      window.localStorage.setItem('Comments', JSON.stringify(store.getState().comments));
     case 'RENAME_CARD':
     case 'EDIT_DESCRIPTION':
       window.localStorage.setItem(`Cards_column${action.columnId}`, JSON.stringify(store.getState().cards[action.columnId]));

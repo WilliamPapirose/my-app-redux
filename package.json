@@ -23,7 +23,10 @@
       "window": true,
       "document": true
     },
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "no-fallthrough": 0
+    }
   },
   "browserslist": [
     ">0.2%",
