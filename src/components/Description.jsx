@@ -42,7 +42,7 @@ class Description extends Component {
     }
   }
 
-  isEditMode = () => {
+  turnEditMode = () => {
     const { currentCard, user } = this.props;
     if (currentCard.author === user) {
       this.setState({ editMode: true });
@@ -69,6 +69,10 @@ class Description extends Component {
     this.editDescription(description);
   }
 
+  descriptionRef = (ref) => {
+    this.description = ref;
+  }
+
   render() {
     const {
       user,
@@ -77,7 +81,7 @@ class Description extends Component {
     const { description, editMode, addingMode } = this.state;
     return (
       <div
-        onFocus={this.isEditMode}
+        onFocus={this.turnEditMode}
         className="description"
       >
         {(currentCard.author === user && !addingMode) && (
@@ -92,7 +96,7 @@ class Description extends Component {
             placeholder="Description"
             value={description}
             onChange={this.onChange}
-            ref={(ref) => { this.description = ref; }}
+            ref={this.descriptionRef}
             className="textarea"
           />
           {currentCard.author === user && editMode && (

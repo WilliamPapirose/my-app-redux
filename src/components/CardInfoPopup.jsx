@@ -5,7 +5,11 @@ import CommentsContainer from '../containers/CommentsContainer';
 
 const CardInfoPopup = ({
   hideCardInfoPopup,
-  currentCard,
+  currentCard: {
+    author,
+    name,
+    id,
+  },
   currentColumn,
   comments,
 }) => (
@@ -16,9 +20,9 @@ const CardInfoPopup = ({
         <div className="head">
           <p className="author">
             Author:&nbsp;
-            {currentCard.author}
+            {author}
           </p>
-          <p className="card_name">{currentCard.name}</p>
+          <p className="card_name">{name}</p>
           <p className="column_name">{currentColumn.name}</p>
           <div className="buttons">
             <button
@@ -32,8 +36,8 @@ const CardInfoPopup = ({
         </div>
         <DescriptionContainer />
         <CommentsContainer
-          cardId={currentCard.id}
-          comments={comments[currentCard.id]}
+          cardId={id}
+          comments={comments[id]}
         />
       </div>
     </div>

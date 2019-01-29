@@ -46,6 +46,10 @@ class Comment extends Component {
     }
   }
 
+  commentRef = (ref) => {
+    this.comment = ref;
+  }
+
   render() {
     const { onEdit } = this.state;
     const {
@@ -61,7 +65,7 @@ class Comment extends Component {
           role="presentation"
           className={onEdit ? 'comment_textarea' : 'comment_textarea transparant'}
           onKeyDown={this.handleKeyDown}
-          ref={(ref) => { this.comment = ref; }}
+          ref={this.commentRef}
           contentEditable={author === user && onEdit}
         >
           {text}

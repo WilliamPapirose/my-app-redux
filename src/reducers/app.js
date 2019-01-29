@@ -1,8 +1,8 @@
 const initialState = {
   current: { card: {}, column: {}, isShowed: false },
-  user: '',
-  nextCardId: Number.parseInt(window.localStorage.getItem('nextCardId'), 10) || 0,
-  nextCommentId: Number.parseInt(window.localStorage.getItem('nextCommentId'), 10) || 0,
+  user: window.localStorage.getItem('user') || '',
+  nextCardId: Number.parseInt(window.localStorage.getItem('nextCardId'), 10) || 1,
+  nextCommentId: Number.parseInt(window.localStorage.getItem('nextCommentId'), 10) || 1,
 };
 
 const app = (state = initialState, action) => {
@@ -39,6 +39,11 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case 'LOG_OUT':
+      return {
+        ...state,
+        user: '',
       };
     default:
       return state;

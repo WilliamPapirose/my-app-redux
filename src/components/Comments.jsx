@@ -25,6 +25,10 @@ class Comments extends Component {
     }
   }
 
+  commentRef = (ref) => {
+    this.comment = ref;
+  }
+
   render() {
     const {
       comments,
@@ -39,7 +43,7 @@ class Comments extends Component {
           <textarea
             onKeyDown={this.handleKeyDown}
             className="textarea comment_text"
-            ref={(ref) => { this.comment = ref; }}
+            ref={this.commentRef}
           />
           <button
             type="button"

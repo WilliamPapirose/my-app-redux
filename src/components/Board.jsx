@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ColumnContainer from '../containers/ColumnContainer';
-import SignInContainer from '../containers/SignInContainer';
-import HeaderContainer from '../containers/HeaderContainer';
+import SignIn from './SignIn';
+import Header from './Header';
 import CardInfoPopupContainer from '../containers/CardInfoPopupContainer';
 
 class Board extends Component {
@@ -24,19 +24,20 @@ class Board extends Component {
   }
 
   render() {
-    const { user, columns, cardInfoIsShowed } = this.props;
+    const {
+      user,
+      columns,
+      cardInfoIsShowed,
+      logOut,
+      signIn,
+    } = this.props;
     return (
       <React.Fragment>
-        { !user && (
-          <div role="presentation" className="fade">
-            <SignInContainer />
-          </div>
-        )}
-        { user && (
+        { user ? (
           <React.Fragment>
-            <HeaderContainer />
+            <Header user={user} logOut={logOut} />
             { cardInfoIsShowed && (
-              <CardInfoPopupContainer />
+            <CardInfoPopupContainer />
             )}
             <div className="all_columns">
               {columns.map(column => (
@@ -44,6 +45,10 @@ class Board extends Component {
               ))}
             </div>
           </React.Fragment>
+        ) : (
+          <div role="presentation" className="fade">
+            <SignIn signIn={signIn} />
+          </div>
         )}
       </React.Fragment>
     );
@@ -55,6 +60,8 @@ Board.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.any).isRequired,
   cardInfoIsShowed: PropTypes.bool.isRequired,
   hideCardInfoPopup: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
 };
 
 Board.defaultProps = {

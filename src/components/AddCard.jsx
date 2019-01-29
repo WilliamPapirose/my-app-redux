@@ -12,7 +12,7 @@ class AddCard extends Component {
   showHideForm = () => {
     const { isFormShowed } = this.state;
     if (isFormShowed) this.input.value = '';
-    this.setState({ isFormShowed: !isFormShowed });
+    this.setState(prevState => ({ isFormShowed: !prevState.isFormShowed }));
   }
 
   onSubmit = (e) => {
@@ -24,6 +24,10 @@ class AddCard extends Component {
     addCard(this.input.value);
     this.input.value = '';
     this.showHideForm();
+  }
+
+  setInputRef = (node) => {
+    this.input = node;
   }
 
   render() {
@@ -39,7 +43,7 @@ class AddCard extends Component {
                   // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                   maxLength="42"
-                  ref={(node) => { this.input = node; }}
+                  ref={this.setInputRef}
                   className="new_card_name"
                   type="text"
                   placeholder="Card Name"

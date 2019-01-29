@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Board from '../components/Board';
-import { hideCardInfoPopup } from '../actions/index';
+import { hideCardInfoPopup, signIn, logOut } from '../actions/index';
 
 const mapStateToProps = state => ({
   user: state.app.user,
@@ -10,7 +10,11 @@ const mapStateToProps = state => ({
   currentCard: state.app.current.card,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ hideCardInfoPopup }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  hideCardInfoPopup,
+  signIn,
+  logOut,
+}, dispatch);
 
 const BoardContainer = connect(
   mapStateToProps,

@@ -19,21 +19,21 @@ class EditableTitle extends Component {
     if (!canEdit) e.preventDefault();
     else {
       this.setState({
-        length: this.titleText.innerText.length,
+        length: this.title.innerText.length,
       });
     }
   }
 
   handleSubmit = () => {
     const { rename } = this.props;
-    if (this.titleText.innerText.trim() && this.titleText.innerText.length <= maxLength) {
+    if (this.title.innerText.trim() && this.title.innerText.length <= maxLength) {
       this.setState({
-        name: this.titleText.innerText,
+        name: this.title.innerText,
         isFormShowed: false,
       });
-      rename(this.titleText.innerText);
+      rename(this.title.innerText);
     }
-    this.titleText.blur();
+    this.title.blur();
   }
 
   handleKeyDown = (e) => {
@@ -50,13 +50,17 @@ class EditableTitle extends Component {
       this.setState({
         isFormShowed: true,
       });
-    } else this.titleText.blur();
+    } else this.title.blur();
   }
 
   cancel = () => {
     const { name } = this.state;
-    this.titleText.innerHTML = name;
+    this.title.innerHTML = name;
     this.setState({ isFormShowed: false, length: name.length });
+  }
+
+  titleRef = (ref) => {
+    this.title = ref;
   }
 
   render() {
@@ -71,7 +75,7 @@ class EditableTitle extends Component {
           suppressContentEditableWarning
           role="presentation"
           onKeyDown={this.handleKeyDown}
-          ref={(ref) => { this.titleText = ref; }}
+          ref={this.titleRef}
           onFocus={this.countCheck}
           contentEditable="true"
           onKeyPress={this.onChange}
